@@ -2,6 +2,8 @@ window.addEventListener('load', () => {
     let form = document.querySelector("#new-task-form");
     let input = document.querySelector("#new-task-input");
     let list_el = document.querySelector("#tasks");
+    let span = document.querySelector("span");
+    index = 0;
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -42,6 +44,9 @@ window.addEventListener('load', () => {
         task_el.appendChild(task_actions_el)
 
         list_el.appendChild(task_el);
+        input.focus();
+        index++;
+        span.textContent = index;
         input.value = "";
 
         task_edit_el.addEventListener('click', () => {
@@ -49,14 +54,16 @@ window.addEventListener('load', () => {
                 task_input_el.removeAttribute("readonly");
                 task_input_el.focus();
                 task_edit_el.innerText = "Save";
-            }else{
-                task_input_el.setAttribute("readonly" , "readonly");
+            } else {
+                task_input_el.setAttribute("readonly", "readonly");
                 task_edit_el.innerText = "Edit";
             }
         })
 
-        task_delete_el.addEventListener('click' , () => {
+        task_delete_el.addEventListener('click', () => {
             task_el.remove();
+            index--;
+            span.textContent = index;
         })
 
     })
