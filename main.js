@@ -60,7 +60,6 @@ window.addEventListener('load', () => {
         })
 
     })
-    // let task = input.value;
 
 
 
